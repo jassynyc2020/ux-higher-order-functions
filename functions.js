@@ -50,10 +50,32 @@ let products = [
   },
 ];
 
-let chosenDepartment = "";
+let chosenDepartment = products
+  .filter(function (product) {
+    return product.department === "hardware" || "garden" || "tool";
+  })
+  .map(function (product) {
+    return `
+  <li>
+    ${product.department}
+  </li>`;
+  })
+  .reduce(function (product) {
+    return product;
+  });
 
 function renderProducts() {
-  let html = ""; // Your code here!
+  let html = [
+    "<li><h3>25' Garden Hose $9.50<h3></li>",
+    "<li><h3>Bag of Garden Soil $5.50<h3></li>",
+    "<li><h3>Shovel $12.00<h3></li>",
+    "<li><h3>Screwdriver $4.50</h3></li>",
+    "<li><h3>Corded Drill $124.50</h3></li>",
+    "<li><h3>Pack of 50 Screws $8.50</h3></li>",
+    "<li><h3>1/8: waters $4.50</h3></li>",
+  ];
+
+  // Your code here!
   /*
     using the product array
 
