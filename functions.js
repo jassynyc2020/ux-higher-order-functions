@@ -50,30 +50,52 @@ let products = [
   },
 ];
 
-let chosenDepartment = products
-  .filter(function (product) {
-    return product.department === "hardware" || "garden" || "tool";
-  })
-  .map(function (product) {
-    return `
-  <li>
-    ${product.department}
-  </li>`;
-  })
-  .reduce(function (product) {
-    return product;
-  });
+// function showTools() {
+//   let x = document.getElementById["showHardwar"];
+//   let departmentName = "";
+//   let i;
+//   for (i = 0; i < x.length; i++) {
+//     departmentName += x.elements[i].value + "<br>";
+//   }
+// }
+
+// let chosenDepartment = "";
+// for (i = 0; i < products.length; i++);
+// if ((products.department = "hardware")) {
+//   department = "showHardware";
+// } else if ((products.department = "tool")) {
+//   department = "showTools";
+// } else if ((products.department = "garden")) {
+//   department = "showGarden";
+// } else {
+//   department = "showAll";
+// }
+
+let chosenDepartment = "";
 
 function renderProducts() {
-  let html = [
-    "<li><h3>25' Garden Hose $9.50<h3></li>",
-    "<li><h3>Bag of Garden Soil $5.50<h3></li>",
-    "<li><h3>Shovel $12.00<h3></li>",
-    "<li><h3>Screwdriver $4.50</h3></li>",
-    "<li><h3>Corded Drill $124.50</h3></li>",
-    "<li><h3>Pack of 50 Screws $8.50</h3></li>",
-    "<li><h3>1/8: waters $4.50</h3></li>",
-  ];
+  let html = "";
+  html = products
+    .filter(function (product) {
+      return product.quantity > 0;
+    })
+    .filter(function (product) {
+      if (chosenDepartment === "") {
+        return product.quantity > 0;
+      } else {
+        return product.department === chosenDepartment;
+      }
+    })
+    .map(function (product) {
+      return `
+      <li>
+      <h3>${product.name}</h3><br>
+      <p>Price: $ ${product.price}</p>
+      </li>`;
+    })
+    .reduce(function (text, product) {
+      return text + product;
+    });
 
   // Your code here!
   /*
